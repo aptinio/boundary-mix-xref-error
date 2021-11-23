@@ -33,6 +33,7 @@ defmodule Foo.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:ci, github: "sasa1977/ci"},
       {:phoenix, "~> 1.6.2"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
