@@ -17,6 +17,8 @@ defmodule FooWeb do
   and import those modules here.
   """
 
+  use Boundary, deps: [Ecto.Changeset, Foo, Phoenix], exports: [Endpoint]
+
   def controller do
     quote do
       use Phoenix.Controller, namespace: FooWeb

@@ -1,4 +1,5 @@
 defmodule Mix.Tasks.Foo.Ci do
+  use Boundary, classify_to: FooMix
   use Mix.Task
   import IO.ANSI
   alias Job.Pipeline

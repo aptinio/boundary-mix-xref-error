@@ -7,7 +7,14 @@ defmodule Foo.MixProject do
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:gettext] ++ Mix.compilers(),
+      compilers: [:boundary, :gettext] ++ Mix.compilers(),
+      boundary: [
+        default: [
+          check: [
+            apps: [:phoenix, :ecto, {:mix, :runtime}]
+          ]
+        ]
+      ],
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -33,6 +40,7 @@ defmodule Foo.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:boundary, github: "sasa1977/boundary", runtime: false},
       {:ci, github: "sasa1977/ci"},
       {:phoenix, "~> 1.6.2"},
       {:phoenix_ecto, "~> 4.4"},
