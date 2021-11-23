@@ -11,7 +11,7 @@ defmodule Mix.Tasks.Foo.Ci do
 
     Job.run(
       Pipeline.sequence([
-        mix("compile --warnings-as-errors"),
+        mix("compile --force --warnings-as-errors"),
         Pipeline.parallel([
           Pipeline.sequence([
             mix("test"),
