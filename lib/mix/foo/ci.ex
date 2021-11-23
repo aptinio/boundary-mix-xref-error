@@ -12,7 +12,13 @@ defmodule Mix.Tasks.Foo.Ci do
     Job.run(
       Pipeline.sequence([
         mix("compile --warnings-as-errors"),
-        Pipeline.parallel([mix("test"), mix("format --check-formatted")])
+        Pipeline.parallel([
+          Pipeline.sequence([
+            mix("test"),
+            mix("ecto.rollback --all")
+          ]),
+          mix("format --check-formatted")
+        ])
       ]),
       timeout: :timer.minutes(10),
       telemetry_id: [:ci]
